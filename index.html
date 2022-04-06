@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Guess Number</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1 class="title">guess number</h1>
+      <p class="between">(between 1 & 30)</p>
+      <div class="number">?</div>
+    </header>
+    <main>
+      <section class="left">
+        <input type="number guess" />
+        <button class="btn check">Check!</button>
+      </section>
+      <section class="right">
+        <p class="message">Start game...</p>
+        <p class="label-score">
+          Score:
+          <span class="score">30</span>
+        </p>
+        <p class="label-highscore">
+          Highest Score:
+          <span class="highscore">0</span>
+        </p>
+      </section>
+    </main>
+    <button class="btn again">Again</button>
+    <script src="./script.js"></script>
+  </body>
+</html>
