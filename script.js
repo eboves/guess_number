@@ -3,12 +3,10 @@
 let secretNumber = Math.trunc(Math.random() * 30) + 1;
 
 let score = 30;
+let highScore = 0;
 const incog = document.querySelector(".number").textContent;
 const message = document.querySelector(".message").textContent;
 const scoreField = document.querySelector(".score").textContent;
-
-console.log(incog);
-console.log(secretNumber);
 
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
@@ -20,19 +18,15 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector(".message").textContent = "🏆 YOU WON! 🏆";
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.color = "#ffd700";
-  } else if (guess > secretNumber) {
-    if (score > 1) {
-      document.querySelector(".message").textContent = "⬆️ TOO HIGH!";
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
-      document.querySelector(".message").textContent =
-        "😭 YOU LOST the game 😭";
-      document.querySelector(".score").textContent = 0;
+
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector(".highscore").textContent = highScore;
     }
-  } else if (guess < secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector(".message").textContent = "⬇️ TOO LOW!";
+      document.querySelector(".message").textContent =
+        guess > secretNumber ? "⬆️ TOO HIGH!" : "⬇️ TOO LOW";
       score--;
       document.querySelector(".score").textContent = score;
     } else {
@@ -46,8 +40,6 @@ document.querySelector(".check").addEventListener("click", function () {
 document.querySelector(".again").addEventListener("click", function () {
   score = 30;
   secretNumber = Math.trunc(Math.random() * 30) + 1;
-
-  document.querySelector(".number").textContent = secretNumber;
 
   document.querySelector("body").style.backgroundColor = "#fff";
   document.querySelector(".number").style.color = "#000";
